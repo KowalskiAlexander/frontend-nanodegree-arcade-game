@@ -1,10 +1,10 @@
 // declare variables
 
-var canvas_width = 10;
-var canvas_height = 20;
+var canvas_width = 505;
+var canvas_height = 606;
 
 
-// Enemies our player must avoidw
+// Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -12,6 +12,10 @@ var Enemy = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
+
+    // the initial position and speed of any enemy
+    this.x = ;
+    var _speed = 30;// todo
 };
 
 // Update the enemy's position, required method for game
@@ -20,6 +24,10 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+
+
+    // update the enemy. Make the enemy move.
+    this.x += dt * _speed;
 };
 
 // Draw the enemy on the screen, required method for game
@@ -32,14 +40,21 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 var Player = function() {
   this.sprite = 'images\char-boy.png';
+  this._speed = 30; // todo
+
+  // the initial position of the Player
+  // todo
 }
 
 Player.prototype.update = function () {
     // todo
+    this.x = ;
+    this.y = ;
 };
 
 Player.prototype.render = function () {
   // todo
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 Player.prototype.handleInput = function () {
