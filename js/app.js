@@ -55,17 +55,36 @@ var Player = function() {
 }
 
 Player.prototype.update = function() {
-  // todo
+
   // Prevent the player go off the canvas.
-  if (this.y > 383 ) {
+  if (this.y > 383) {
       this.y = 383;
-  }
+  };
+  if (this.y < 1) {
+    this.y = 1;
+    // In this case , the player win the game.
+    console.log("Congratulations on winning the game!");
+    // reset the player position
+    player = new Player();
+  };
   if (this.x > 402.5) {
       this.x = 402.5;
-  }
+  };
   if (this.x < 2.5) {
       this.x = 2.5;
   };
+
+  // check the collision using foreach function on allEnemies array object
+  allEnemies.forEach(function(enemy) {
+    if ( player.y + 131 >= enemy.y + 90
+         && player.x + 25 <= enemy.x + 88
+         && player.y + 73 <= enemy.y + 135
+         && player.x + 76 >= enemy.x + 11) {
+         console.log("Sorry, you lose!");
+         // reset the player.
+         player = new Player();
+     };
+   });
 };
 
 Player.prototype.render = function () {
@@ -87,7 +106,6 @@ Player.prototype.handleInput = function(key) {
     case 'down':
       this.y += this._speed;
       break;
-    // todo
     default:
       this.x = this.x;
       this.y = this.y;
@@ -101,10 +119,13 @@ Player.prototype.handleInput = function(key) {
 // Place the player object in a variable called player
 var allEnemies = [];
 var player = new Player();
-var enemy = new Enemy();
 
-allEnemies.push(enemy);
 
+// generate enemies using for loop
+for (var i = 0; i < 6; i ++) {
+  var enemy = new Enemy();
+  allEnemies.push(enemy);
+};
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
