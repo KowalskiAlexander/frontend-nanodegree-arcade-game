@@ -11,7 +11,9 @@ Movement and Controls: Users move the hero character by using the main up/down/r
 
 ***
 Referred resources:
+
 1. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+
 2.
 http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/
 
