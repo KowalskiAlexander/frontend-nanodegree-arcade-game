@@ -1,9 +1,5 @@
-// declare variables
-
-var canvas_width = 505;
-var canvas_height = 606;
-
-
+'use strict';
+var CANVAS_WIDTH = 505;
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
@@ -31,7 +27,7 @@ Enemy.prototype.update = function(dt) {
     this.x += dt * this._speed;
 
     // renew the enemy
-    if (this.x >= canvas_width){
+    if (this.x >= CANVAS_WIDTH){
       this.x = 0;
     };
 };
@@ -39,7 +35,7 @@ Enemy.prototype.update = function(dt) {
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
+}
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -75,14 +71,15 @@ Player.prototype.update = function() {
   };
 
   // check the collision using foreach function on allEnemies array object
+  var self = this;
   allEnemies.forEach(function(enemy) {
-    if ( player.y + 131 >= enemy.y + 90
-         && player.x + 25 <= enemy.x + 88
-         && player.y + 73 <= enemy.y + 135
-         && player.x + 76 >= enemy.x + 11) {
+    if ( self.y + 131 >= enemy.y + 90
+         && self.x + 25 <= enemy.x + 88
+         && self.y + 73 <= enemy.y + 135
+         && self.x + 76 >= enemy.x + 11) {
          console.log("Sorry, you lose!");
-         // reset the player.
-         player = new Player();
+         // reset the this by using reset function.
+         self.reset();
      };
    });
 };
@@ -112,6 +109,10 @@ Player.prototype.handleInput = function(key) {
   };
 };
 
+Player.prototype.reset = function () {
+  this.x = 202.5;
+  this.y = 383;
+};
 
 
 // Now instantiate your objects.

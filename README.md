@@ -9,6 +9,8 @@ Once the player is hit by any enemy, the player will be reset to the initial pos
 
 Movement and Controls: Users move the hero character by using the main up/down/right/left arrow keys on their keyboards.
 
+How to run the game: Players only need to clone the repo and open the index.html and then enjoy the game.
+
 ***
 Referred resources:
 
